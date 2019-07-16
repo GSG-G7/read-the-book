@@ -7,6 +7,7 @@ const urls = {
     moviedbCredits : (id) => `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${urls.apiKeys.moviedb}`,
     moviedbVideos : (id) => `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${urls.apiKeys.moviedb}&language=en-US`,
     moviedbImageLink: (link) => `https://image.tmdb.org/t/p/w500`+link,
+    youtubeLink: (key) => `https://www.youtube.com/watch?v=${key}`
 } 
 
 function makeApiRequest(url, callback) {
@@ -40,5 +41,12 @@ const moviesdb = {
         makeApiRequest(urls.moviedbCredits(id), function(responseText) {
             return JSON.parse(responseText).cast.slice(0,4);
         });
+    },
+    video: function(id){
+        makeApiRequest(urls.moviedbVideos(id), function(responseText) {
+            let results = JSON.parse(responseText);
+            return urls.youtubeLink(results.results[0].key);
+        });
     }
 }
+moviesdb.video("296096");
