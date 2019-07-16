@@ -29,11 +29,6 @@ const moviesdb = {
             return JSON.parse(responseText).results.slice(0,7);
         });
     },
-<<<<<<< HEAD
-}
-console.log(makeApiRequest(urls.moviedbSearch("me before you"),(x)=> console.log(x)))
-console.log(makeApiRequest(urls.googleBookSearch("me before you"),(x)=> console.log(x)))
-=======
     details: function(id) {
         makeApiRequest(urls.moviedbDetails(id), function(responseText) {
             let response = JSON.parse(responseText);
@@ -50,4 +45,4 @@ console.log(makeApiRequest(urls.googleBookSearch("me before you"),(x)=> console.
         });
     }
 }
->>>>>>> 6b5df6f4a875ab5a5687108944a19937bb232d95
+console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
