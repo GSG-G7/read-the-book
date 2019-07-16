@@ -26,5 +26,17 @@ const moviesdb = {
             return JSON.parse(responseText).results.slice(0,7);
         });
     },
+    details: function(id) {
+        makeApiRequest(urls.moviedbDetails(id), function(responseText) {
+            let response = JSON.parse(responseText);
+            console.dir( {
+                overview: response.overview,
+                genre: response.genres,
+                rating: response.vote_average
+            });
+
+
+        })
+    }
 }
-console.log(makeApiRequest(urls.moviedbSearch("me before you"),(x)=> console.log(x)))
+moviesdb.details("296096");
