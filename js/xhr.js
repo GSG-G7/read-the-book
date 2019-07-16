@@ -29,7 +29,7 @@ const moviesdb = {
     details: function(id) {
         makeApiRequest(urls.moviedbDetails(id), function(responseText) {
             let response = JSON.parse(responseText);
-            console.dir( {
+            return {
                 overview: response.overview,
                 genre: response.genres,
                 rating: response.vote_average
@@ -39,4 +39,3 @@ const moviesdb = {
         })
     }
 }
-moviesdb.details("296096");
