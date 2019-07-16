@@ -34,8 +34,16 @@ const moviesdb = {
                 genre: response.genres,
                 rating: response.vote_average
             };
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> c62852acfa5881b1d47569af93bff4cf2ed1cf3c
         })
+    },
+    credits: function(id) {
+        makeApiRequest(urls.moviedbCredits(id), function(responseText) {
+            return JSON.parse(responseText).cast.slice(0,4);
+        });
     }
 }
