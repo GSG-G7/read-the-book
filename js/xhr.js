@@ -42,9 +42,17 @@ console.log(makeApiRequest(urls.googleBookSearch("me before you"),(x)=> console.
                 genre: response.genres,
                 rating: response.vote_average
             };
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> c62852acfa5881b1d47569af93bff4cf2ed1cf3c
         })
+    },
+    credits: function(id) {
+        makeApiRequest(urls.moviedbCredits(id), function(responseText) {
+            return JSON.parse(responseText).cast.slice(0,4);
+        });
     }
 }
 >>>>>>> 6b5df6f4a875ab5a5687108944a19937bb232d95
