@@ -33,7 +33,7 @@ const moviesdb = {
                 overview: response.overview,
                 genre: response.genres,
                 rating: response.vote_average
-            });
+            };
 
 
         })
