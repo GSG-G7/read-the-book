@@ -41,7 +41,7 @@ console.log(makeApiRequest(urls.googleBookSearch("me before you"),(x)=> console.
                 overview: response.overview,
                 genre: response.genres,
                 rating: response.vote_average
-            });
+            };
 
 
         })
