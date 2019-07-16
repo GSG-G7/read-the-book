@@ -23,9 +23,7 @@ function makeApiRequest(url, callback) {
 const moviesdb = {
     search: function (title) {
         makeApiRequest(urls.moviedbSearch(title),function(responseText){
-            let response = JSON.parse(responseText);
-            console.dir(response.results.slice(0,7));
-            return response.results.slice(0,7);
+            return JSON.parse(responseText).results.slice(0,7);
         });
     },
 }
