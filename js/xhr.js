@@ -19,4 +19,14 @@ function makeApiRequest(url, callback) {
     xhr.open('GET',url);
     xhr.send();
 }
+// search function
+const moviesdb = {
+    search: function (title) {
+        makeApiRequest(urls.moviedbSearch(title),function(responseText){
+            let response = JSON.parse(responseText);
+            console.dir(response.results.slice(0,7));
+            return response.results.slice(0,7);
+        });
+    },
+}
 console.log(makeApiRequest(urls.moviedbSearch("me before you"),(x)=> console.log(x)))
