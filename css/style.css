@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search-section{
+    display:flex;
+    padding: 2% 10%;
+}
+.search{
+    margin: auto;
+    width: 100%;
+    height: 3rem;
+    }
+.search-input{
+    width: 78%;
+    height: 100%;
+}
+.search-btn{
+    width: 20%;
+    height: 100%;
+
+}
+.result-section{
+    display: flex;
+
+}
+
+
