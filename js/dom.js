@@ -1,11 +1,13 @@
 const selector = (id) => document.querySelector(`#${id}`);
 
 const movieResults = selector('result-movies');
-
-moviesdb.search("harry potter", function (res) {
-    renderMovies(res);
-});
-
+selector('search-btn').addEventListener('click', function () {
+    moviesdb.search(selector('search-input').value, renderMovies);
+})
+selector('search-input').addEventListener('keydown', function (e) {
+    if (e.key == 'Enter')
+        moviesdb.search(selector('search-input').value, renderMovies);
+})
 function renderMovies(res) {
     let oldContainer = selector('result-movie-container');
     let container = document.createElement('div');
@@ -34,12 +36,13 @@ function createMovieNode(obj) {
         textDiv.appendChild(p);
     });
     moviesdb.video(obj.id, function (link) {
-        const a = document.createElement('a');
-        a.href = link;
-        a.target = 'blank';
-        a.textContent = 'Show Trailer';
-        textDiv.appendChild(a);
-
+        if (link) {
+            const a = document.createElement('a');
+            a.href = link;
+            a.target = 'blank';
+            a.textContent = 'Show Trailer';
+            textDiv.appendChild(a);
+        }
     });
     rating.textContent = " " + obj.rating;
     title.textContent = obj.name;
