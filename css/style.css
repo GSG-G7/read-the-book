@@ -1,26 +1,30 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #ffd8d8;
 }
-.search-section{
+
+.search-section {
     /* display:flex; */
     width: auto;
     margin: auto;
     padding: 0% 10%;
 }
-.result-section{
+
+.result-section {
     display: flex;
     padding: 2%;
     flex-direction: column;
-    
+
 }
-.result-section .result-movies{
+
+.result-section .result-movies {
     width: 100%;
-    background-color:  #EEE;
+    background-color: #EEE;
     padding: 1%;
     min-height: 40vh;
     border-radius: 20px;
@@ -28,17 +32,18 @@ body{
     border-color: #e16868;
     border-style: solid;
 }
-.result-section .result-movies-head{
+
+.result-section .result-movies-head {
     text-align: center;
 }
 
-.result-section .result-books-head{
+.result-section .result-books-head {
     text-align: center;
 }
 
-.result-section .result-books{
+.result-section .result-books {
     width: 100%;
-    background-color:  #EEE;
+    background-color: #EEE;
     padding: 1%;
     min-height: 40vh;
     border-radius: 20px;
@@ -46,25 +51,24 @@ body{
     border-color: #e16868;
     border-style: solid;
 }
-.star-color{
+
+.star-color {
     color: rgb(255, 187, 0);
 }
 
 /* Search section */
-.tb
-{
+.tb {
     display: table;
     width: 100%;
 }
 
-.td
-{
+.td {
     display: table-cell;
     vertical-align: middle;
 }
 
-input, button
-{
+input,
+button {
     color: #000;
     padding: 0;
     margin: 0;
@@ -72,8 +76,7 @@ input, button
     background-color: transparent;
 }
 
-.search-section .search
-{
+.search-section .search {
     padding: 1%;
     margin: 5% auto 2% auto;
     background-color: #ff7575;
@@ -82,8 +85,7 @@ input, button
 }
 
 
-.search-input
-{
+.search-input {
     width: 100%;
     font-size: 1.5rem;
     line-height: 1;
@@ -91,18 +93,15 @@ input, button
     background-color: #ff7474;
 }
 
-.search-input::placeholder
-{
+.search-input::placeholder {
     color: #e16868;
 }
 
-.s-search
-{
+.s-search {
     width: 1px;
 }
 
-.search-btn
-{
+.search-btn {
     position: relative;
     display: block;
     width: 8%;
@@ -110,8 +109,7 @@ input, button
     cursor: pointer;
 }
 
-.s-circle
-{
+.s-circle {
     position: relative;
     top: -8px;
     left: -20px;
@@ -125,45 +123,53 @@ input, button
     transition: 0.5s ease all;
 }
 
-.result-movieNode{
+.result-movieNode {
     display: flex;
     width: 100%;
     height: auto;
     padding: 2% 0
 }
-.result-movie-imageDiv{
+
+.result-movie-imageDiv {
     width: 30%
 }
-.result-movie-image{
+
+.result-movie-image {
     width: 100%
 }
-.result-movie-textDiv{
+
+.result-movie-textDiv {
     width: 70%;
     padding: 1% 2%
 }
+
 /* book node */
-.result-bookNode{
+.result-bookNode {
     display: flex;
     width: 100%;
     height: auto;
     padding: 2% 0
 }
-.result-books-header{
+
+.result-books-header {
     text-align: center;
 }
-.result-book-imageDiv{
+
+.result-book-imageDiv {
     width: 30%
 }
-.result-book-image{
+
+.result-book-image {
     width: 100%
 }
-.result-book-textDiv{
+
+.result-book-textDiv {
     width: 70%;
     padding: 1% 2%
 }
+
 /*book node*/
-.search-btn-span
-{
+.search-btn-span {
     position: absolute;
     display: block;
     width: 45px;
@@ -174,8 +180,8 @@ input, button
     transition: 0.5s ease all;
 }
 
-.search-btn-span:before, .search-btn-span:after
-{
+.search-btn-span:before,
+.search-btn-span:after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -188,8 +194,7 @@ input, button
     transition: 0.5s ease all;
 }
 
-.s-search:hover .s-circle
-{
+.s-search:hover .s-circle {
     top: -1px;
     width: 1.5rem;
     height: .5rem;
@@ -198,8 +203,7 @@ input, button
     border-radius: 20px;
 }
 
-.s-search:hover .search-btn-span
-{
+.s-search:hover .search-btn-span {
     top: 50%;
     left: 56px;
     width: 25px;
@@ -207,26 +211,25 @@ input, button
     transform: rotateZ(0);
 }
 
-.s-search:hover .search-btn-span:before
-{
+.s-search:hover .search-btn-span:before {
     bottom: 9px;
     transform: rotateZ(52deg);
 }
 
-.s-search:hover .search-btn-span:after
-{
+.s-search:hover .search-btn-span:after {
     bottom: -4px;
     transform: rotateZ(-52deg);
 }
-.s-search:hover .search-btn-span:before, .s-search:hover .search-btn-span:after
-{
+
+.s-search:hover .search-btn-span:before,
+.s-search:hover .search-btn-span:after {
     right: 60px;
     width: 20px;
     background-color: #fff;
 }
 
-@media (min-width: 768px){
-    .result-section{
+@media (min-width: 768px) {
+    .result-section {
         flex-direction: row;
     }
-  }
+}
