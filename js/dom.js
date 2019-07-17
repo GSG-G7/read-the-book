@@ -78,7 +78,7 @@ function createMovieNode(obj) {
    const oldContainer = selector('result-book-container') ;
    const newContainer = document.createElement('div');
    newContainer.id = 'result-book-container';
-   res.map(book => {
+   res.forEach(book => {
         const bookNode = createBookNode(book);
         newContainer.appendChild(bookNode);
    
