@@ -53,6 +53,18 @@ const moviesdb = {
         });
     }
 }
-// moviesdb.video("296096",x=>console.log(x));
-// console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
-// module.exports = moviesdb;
+const booksdb = {
+    search: function (title,cb){
+        makeApiRequest(urls.googleBookSearch(title),function(res){
+            cb(res.items.slice(0,7).map((value)=>{
+                return {title: value.volumeInfo.title,
+                                 Autors: value.volumeInfo.authors,
+                                 description: value.volumeInfo.description,
+                                 averageRating: value.volumeInfo.averageRating,
+                                 image:value.volumeInfo.imageLinks.thumbnail                        
+                                }
+            }));
+        })
+        
+    }
+}
