@@ -48,7 +48,6 @@
     * description
     * rating
     * genre
-    * link to goodreads
 
 # stretch goals
 - using local storage to save favourites
