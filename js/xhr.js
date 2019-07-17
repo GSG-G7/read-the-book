@@ -51,23 +51,17 @@ const moviesdb = {
 }
 
 const booksdb = {
-    search: function (title){
+    search: function (title,cb){
         makeApiRequest(urls.googleBookSearch(title),function(res){
-           var First7Results=res.items.slice(0,7);
-           console.log(First7Results);
-
-            var First7Results = First7Results.map((value)=>{
-             return {title: value.volumeInfo.title,
-                     Autors: value.volumeInfo.authors,
-                     description: value.volumeInfo.description,
-                     averageRating: value.volumeInfo.averageRating,
-                     image:value.volumeInfo.imageLinks.thumbnail                     
-            
-                    }
-                   
-                });
-                console.log(First7Results);
-        });
+            cb(res.items.slice(0,7).map((value)=>{
+                return {title: value.volumeInfo.title,
+                                 Autors: value.volumeInfo.authors,
+                                 description: value.volumeInfo.description,
+                                 averageRating: value.volumeInfo.averageRating,
+                                 image:value.volumeInfo.imageLinks.thumbnail                        
+                                }
+            }));
+        })
         
     }
 }
