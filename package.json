@@ -19,8 +19,7 @@
     "url": "https://github.com/GSG-G7/read-the-book/issues"
   },
   "homepage": "https://github.com/GSG-G7/read-the-book#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0"

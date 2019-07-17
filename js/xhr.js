@@ -43,19 +43,5 @@ const moviesdb = {
             return JSON.parse(responseText).cast.slice(0,4);
         });
     }
-}
 
-const googleBook = {
-    search:function(query){
-        makeApiRequest(urls.googleBookSearch(query),(response)=>{
-            let res =JSON.parse(response);  
-            const title = res.items.slice(0,5)[0].volumeInfo.title;
-            const auther = res.items.slice(0,5)[0].volumeInfo.authors;
-            const description = res.items.slice(0,5)[0].volumeInfo.description;
-            const averageRating = res.items.slice(0,5)[0].volumeInfo.averageRating;
-            const image = res.items.slice(0,5)[0].volumeInfo.imageLinks.thumbnail;       
-        })
-    }
 }
-
-googleBook.search('Me before you');
