@@ -3,9 +3,6 @@ const selector = (id) => document.querySelector(`#${id}`);
 const movieResults = selector('result-movies');
 const bookResults = selector('result-books');
 
-moviesdb.search("harry potter", function (res) {
-    renderMovies(res);
-});
 
 selector('search-btn').addEventListener('click', function () {
     moviesdb.search(selector('search-input').value, renderMovies);
@@ -69,9 +66,7 @@ function createMovieNode(obj) {
 
     return div;
 }
- booksdb.search("harry potter",function(res){
-     renderBooks(res);
- })
+ 
 
  function renderBooks(res){
    const oldContainer = selector('result-book-container') ;

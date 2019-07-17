@@ -26,7 +26,6 @@ function makeApiRequest(url, callback) {
 const moviesdb = {
     search: function (title, cb) {
         makeApiRequest(urls.moviedbSearch(title),function(res){
-            console.log(res);
             cb(res.results.slice(0,7).map(e=>e.id));
         });
     },
@@ -72,4 +71,3 @@ const booksdb = {
         
     }
 }
-makeApiRequest(urls.googleBookSearch('Me before you'),(c)=>{console.log(c)});
