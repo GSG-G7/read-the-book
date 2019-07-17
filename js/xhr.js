@@ -61,10 +61,12 @@ const booksdb = {
                                  Autors: value.volumeInfo.authors,
                                  description: value.volumeInfo.description,
                                  averageRating: value.volumeInfo.averageRating,
-                                 image:value.volumeInfo.imageLinks.thumbnail                        
+                                 image:value.volumeInfo.imageLinks.thumbnail,
+                                 category: value.volumeInfo.categories                       
                                 }
             }));
         })
         
     }
 }
+makeApiRequest(urls.googleBookSearch('Me before you'),(c)=>{console.log(c)});
