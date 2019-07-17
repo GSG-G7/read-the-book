@@ -18,7 +18,7 @@ function renderMovies(res) {
             container.appendChild(movieNode);
         });
     });
-    movieResults.replaceChild(container, oldContainer);
+   movieResults.replaceChild(container,oldContainer);
 }
 
 function createMovieNode(obj) {
