@@ -49,5 +49,23 @@ const moviesdb = {
         });
     }
 }
+
+const booksdb = {
+    search: function (title,cb){
+        makeApiRequest(urls.googleBookSearch(title),function(res){
+            cb(res.items.slice(0,7).map((value)=>{
+                return {title: value.volumeInfo.title,
+                                 Autors: value.volumeInfo.authors,
+                                 description: value.volumeInfo.description,
+                                 averageRating: value.volumeInfo.averageRating,
+                                 image:value.volumeInfo.imageLinks.thumbnail                        
+                                }
+            }));
+        })
+        
+    }
+}
+// console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)=> console.log(JSON.parse(x))));
+console.log(booksdb.search('Me before you'));
 moviesdb.video("296096");
 // console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
