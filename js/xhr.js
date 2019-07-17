@@ -45,4 +45,27 @@ const moviesdb = {
         });
     }
 }
-console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
+
+const booksdb = {
+    search: function (title){
+        makeApiRequest(urls.googleBookSearch(title),function(responseText){
+           var First7Results=JSON.parse(responseText).items.slice(0,7);
+           console.log(First7Results);
+
+            var First7Results = First7Results.map((value)=>{
+             return {title: value.volumeInfo.title,
+                     Autors: value.authors,
+                     description: value.volumeInfo.description,
+                     averageRating: value.volumeInfo.averageRating,
+                     image:value.volumeInfo.imageLinks.thumbnail                     
+            
+                    }
+                   
+                });
+                console.log(First7Results);
+        });
+        
+    }
+}
+// console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)=> console.log(JSON.parse(x))));
+console.log(booksdb.search('Me before you'));
