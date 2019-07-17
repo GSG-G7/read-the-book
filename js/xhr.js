@@ -24,32 +24,35 @@ function makeApiRequest(url, callback) {
     xhr.send();
 }
 const moviesdb = {
-    search: function (title) {
+    search: function (title, cb) {
         makeApiRequest(urls.moviedbSearch(title),function(res){
-            res.results.slice(0,7);
+            console.log(res);
+            cb(res.results.slice(0,7).map(e=>e.id));
         });
     },
-    details: function(id) {
+    details: function(id, cb) {
         makeApiRequest(urls.moviedbDetails(id), function(res) {
-            let obj = {
+            cb({
+                id : id,
+                name: res.original_title,
+                posterLink : urls.moviedbImageLink(res.poster_path),
                 overview: res.overview,
-                genre: res.genres,
+                genre: res.genres.map(e=>e.name),
                 rating: res.vote_average
-            };
+            });
         })
     },
-    credits: function(id) {
+    credits: function(id, cb) {
         makeApiRequest(urls.moviedbCredits(id), function(res) {
-             res.cast.slice(0,4);
+             cb(res.cast.slice(0,4).map(e => e.name));
         });
     },
-    video: function(id){
+    video: function(id, cb){
         makeApiRequest(urls.moviedbVideos(id), function(res) {
-            return urls.youtubeLink(res.results[0].key);
+            cb(urls.youtubeLink(res.results[0].key));
         });
     }
 }
-
 const booksdb = {
     search: function (title,cb){
         makeApiRequest(urls.googleBookSearch(title),function(res){
@@ -65,7 +68,3 @@ const booksdb = {
         
     }
 }
-// console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)=> console.log(JSON.parse(x))));
-console.log(booksdb.search('Me before you'));
-moviesdb.video("296096");
-// console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
