@@ -9,11 +9,12 @@ selector('search-btn').addEventListener('click', function () {
     booksdb.search(selector('search-input').value, renderBooks)
 })
 selector('search-input').addEventListener('keydown', function (e) {
-    if (e.key == 'Enter'){
+    if (e.key == 'Enter') {
         moviesdb.search(selector('search-input').value, renderMovies);
         booksdb.search(selector('search-input').value, renderBooks);
     }
 })
+
 function renderMovies(res) {
     let oldContainer = selector('result-movie-container');
     let container = document.createElement('div');
@@ -25,7 +26,7 @@ function renderMovies(res) {
         });
     });
     container.classList.add('result-movies-container');
-   movieResults.replaceChild(container,oldContainer);
+    movieResults.replaceChild(container, oldContainer);
 }
 
 function createMovieNode(obj) {
@@ -38,8 +39,8 @@ function createMovieNode(obj) {
     const genre = document.createElement('p')
     const ratingDiv = document.createElement('div');
     const rating = document.createElement('span');
-    const ratingIco = document.createElement('i');  
-    
+    const ratingIco = document.createElement('i');
+
     moviesdb.credits(obj.id, function (cast) {
         const p = document.createElement('p');
         p.textContent = "Cast: " + cast.join(', ');
@@ -54,20 +55,20 @@ function createMovieNode(obj) {
             textDiv.appendChild(a);
         }
     });
-    
+
     rating.textContent = " " + obj.rating;
     title.textContent = obj.name;
     img.src = obj.posterLink;
     overview.textContent = obj.overview;
     genre.textContent = "Genre: " + obj.genre.join(', ')
 
-    ratingIco.classList.add('fas','fa-star','star-color');
+    ratingIco.classList.add('fas', 'fa-star', 'star-color');
     img.classList.add('result-movie-image');
     imgDiv.classList.add('result-movie-imageDiv');
     textDiv.classList.add('result-movie-textDiv');
 
     ratingDiv.appendChild(ratingIco);
-    ratingDiv.appendChild(rating); 
+    ratingDiv.appendChild(rating);
     textDiv.appendChild(title);
     textDiv.appendChild(ratingDiv)
     textDiv.appendChild(overview);
@@ -80,21 +81,21 @@ function createMovieNode(obj) {
 
     return div;
 }
- 
 
- function renderBooks(res){
-   const oldContainer = selector('result-book-container') ;
-   const newContainer = document.createElement('div');
-   newContainer.id = 'result-book-container';
-   res.forEach(book => {
+
+function renderBooks(res) {
+    const oldContainer = selector('result-book-container');
+    const newContainer = document.createElement('div');
+    newContainer.id = 'result-book-container';
+    res.forEach(book => {
         const bookNode = createBookNode(book);
         newContainer.appendChild(bookNode);
-   
-});
-bookResults.replaceChild(newContainer, oldContainer);
+
+    });
+    bookResults.replaceChild(newContainer, oldContainer);
 }
 
- function createBookNode(book){
+function createBookNode(book) {
     const div = document.createElement('div');
     const imgDiv = document.createElement('div');
     const textDiv = document.createElement('div');
@@ -104,38 +105,38 @@ bookResults.replaceChild(newContainer, oldContainer);
     const genre = document.createElement('p')
     const ratingDiv = document.createElement('div');
     const rating = document.createElement('span');
-    const ratingIco = document.createElement('i');  
+    const ratingIco = document.createElement('i');
 
     rating.textContent = " " + book.averageRating;
     title.textContent = book.title;
     img.src = book.image;
     overview.textContent = book.description;
-   
 
-    ratingIco.classList.add('fas','fa-star','star-color');
+
+    ratingIco.classList.add('fas', 'fa-star', 'star-color');
     img.classList.add('result-book-image');
     imgDiv.classList.add('result-book-imageDiv');
     textDiv.classList.add('result-book-textDiv');
     ratingDiv.appendChild(ratingIco);
-    ratingDiv.appendChild(rating); 
+    ratingDiv.appendChild(rating);
     imgDiv.appendChild(img);
     textDiv.appendChild(title);
-    if(book.averageRating !== undefined)
-    textDiv.appendChild(ratingDiv);
+    if (book.averageRating !== undefined)
+        textDiv.appendChild(ratingDiv);
 
-    if(book.category !== undefined)
-    genre.textContent = "Genre: " +book.category.join(', ')
-    
-    if(overview.textContent!=="undefined" ){
+    if (book.category !== undefined)
+        genre.textContent = "Genre: " + book.category.join(', ')
+
+    if (overview.textContent !== "undefined") {
         textDiv.appendChild(overview);
     }
-       if(genre.textContent!=="undefined"){
+    if (genre.textContent !== "undefined") {
         textDiv.appendChild(genre);
     }
-    
+
 
     div.appendChild(imgDiv);
     div.appendChild(textDiv);
     div.classList.add('result-bookNode')
     return div;
- }
+}
