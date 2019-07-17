@@ -12,16 +12,21 @@
     <main>
         <section class="search-section">
             <div class="search">
-                <input type="text" class="search-input" id="search-input" value="">
-                <button class="search-btn" id="search-btn">Search</button>
+                <div class="tb">
+                    <div class="td"><input class='search-input' id='search-input' type="text" aria-label="search" placeholder="Search for books or movies" required></div>
+                    <div class="td s-search">
+                        <button aria-label="submit" id="search-btn" class="search-btn">
+                        <div class="s-circle"></div>
+                        <span class="search-btn-span"></span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="result-section">
+        <section class="result-section" >
             <div class="result-movies" id="result-movies">
-                <h1>Movies</h1>
-                <div id="result-movie-container">
-                    
-                </div>
+                <h1 class="result-movies-head">Movies</h1>
+                    <div id="result-movie-container"></div>
             </div>
             <div class="break-line"></div>
             <div class="result-books" id="result-books">

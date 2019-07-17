@@ -49,7 +49,10 @@ const moviesdb = {
     },
     video: function(id, cb){
         makeApiRequest(urls.moviedbVideos(id), function(res) {
+            if(res.results[0]!==undefined)
             cb(urls.youtubeLink(res.results[0].key));
+            else
+            cb(undefined);
         });
     }
 }

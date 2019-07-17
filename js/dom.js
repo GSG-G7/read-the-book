@@ -7,6 +7,15 @@ moviesdb.search("harry potter", function (res) {
     renderMovies(res);
 });
 
+selector('search-btn').addEventListener('click', function () {
+    moviesdb.search(selector('search-input').value, renderMovies);
+    booksdb.search(selector('search-input').value, renderBooks)
+})
+selector('search-input').addEventListener('keydown', function (e) {
+    if (e.key == 'Enter')
+        moviesdb.search(selector('search-input').value, renderMovies);
+        booksdb.search(selector('search-input').value, renderBooks);
+})
 function renderMovies(res) {
     let oldContainer = selector('result-movie-container');
     let container = document.createElement('div');
@@ -17,7 +26,7 @@ function renderMovies(res) {
             container.appendChild(movieNode);
         });
     });
-    movieResults.replaceChild(container, oldContainer);
+   movieResults.replaceChild(container,oldContainer);
 }
 
 function createMovieNode(obj) {
@@ -35,17 +44,18 @@ function createMovieNode(obj) {
         textDiv.appendChild(p);
     });
     moviesdb.video(obj.id, function (link) {
-        const a = document.createElement('a');
-        a.href = link;
-        a.target = 'blank';
-        a.textContent = 'Show Trailer';
-        textDiv.appendChild(a);
-
+        if (link) {
+            const a = document.createElement('a');
+            a.href = link;
+            a.target = 'blank';
+            a.textContent = 'Show Trailer';
+            textDiv.appendChild(a);
+        }
     });
     rating.textContent = " " + obj.rating;
     title.textContent = obj.name;
     img.src = obj.posterLink;
-    overview.textContent = "Synopsis: " + obj.overview;
+    overview.textContent = obj.overview;
     genre.textContent = "Genre: " + obj.genre.join(', ')
 
     title.appendChild(rating);
@@ -88,7 +98,7 @@ bookResults.replaceChild(newContainer, oldContainer);
     rating.textContent = " " + book.averageRating;
     title.textContent = book.title;
     img.src = book.image;
-    overview.textContent = "Synopsis: " + book.description;
+    overview.textContent = book.description;
     genre.textContent = "Genre: " +book.category.join(', ')
 
     imgDiv.appendChild(img);
@@ -96,7 +106,7 @@ bookResults.replaceChild(newContainer, oldContainer);
 
     if(rating.textContent!== " undefined"){
         title.appendChild(rating);  
-    } if(overview.textContent!=="Synopsis: undefined" ){
+    } if(overview.textContent!=="undefined" ){
         textDiv.appendChild(overview);
     }
        if(genre.textContent!=="undefined"){
