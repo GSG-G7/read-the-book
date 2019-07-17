@@ -24,6 +24,9 @@ body{
     padding: 1%;
     min-height: 200px;
     border-radius: 20px;
+    border-left: 2px;
+    border-color: #e16868;
+    border-style: solid
 }
 .result-section .result-movies-head{
     text-align: center;
@@ -46,8 +49,13 @@ body{
     padding: 1%;
     min-height: 200px;
     border-radius: 20px;
+    border-left: 2px;
+    border-color: #e16868;
+    border-style: solid
 }
-
+.star-color{
+    color: rgb(255, 187, 0);
+}
 
 /* Search section */
 .tb
@@ -122,8 +130,7 @@ input, button
     border-radius: 50%;
     transition: 0.5s ease all;
 }
-.result-movies-container{
-}
+
 .result-movieNode{
     display: flex;
     width: 100%;
@@ -140,6 +147,24 @@ input, button
     width: 70%;
     padding: 1% 2%
 }
+/* book node */
+.result-bookNode{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 2% 0
+}
+.result-book-imageDiv{
+    width: 30%
+}
+.result-book-image{
+    width: 100%
+}
+.result-book-textDiv{
+    width: 70%;
+    padding: 1% 2%
+}
+/*book node*/
 .search-btn-span
 {
     position: absolute;

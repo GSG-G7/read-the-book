@@ -1,7 +1,7 @@
 const urls = {
     apiKeys : {
        moviedb: "88a88f263d1037a89abd98086e80504c",
-       bookdb: "AIzaSyCZxEaGwfrMVo6ZlbLR3_qWsaMYs1LEsR8"
+       bookdb: "AIzaSyCpKMgL4JrjDRVYbOUTaHTj587XvMi153Y"
     },
     moviedbSearch : (query) => `https://api.themoviedb.org/3/search/movie?api_key=${urls.apiKeys.moviedb}&language=en-US&query=${query}&page=1&include_adult=false`,
     moviedbDetails : (id) => `https://api.themoviedb.org/3/movie/${id}?api_key=${urls.apiKeys.moviedb}&language=en-US`,
@@ -37,7 +37,7 @@ const moviesdb = {
                 posterLink : urls.moviedbImageLink(res.poster_path),
                 overview: res.overview,
                 genre: res.genres.map(e=>e.name),
-                rating: res.vote_average
+                rating: res.vote_average?res.vote_average:"no rating"
             });
         })
     },
@@ -58,7 +58,8 @@ const moviesdb = {
 const booksdb = {
     search: function (title,cb){
         makeApiRequest(urls.googleBookSearch(title),function(res){
-            cb(res.items.slice(0,7).map((value)=>{
+            console.log(res.items.slice(0,7)[1].volumeInfo.averageRating);
+             cb(res.items.slice(0,7).map((value)=>{
                 return {title: value.volumeInfo.title,
                                  Autors: value.volumeInfo.authors,
                                  description: value.volumeInfo.description,
