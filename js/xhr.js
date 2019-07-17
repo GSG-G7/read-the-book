@@ -58,7 +58,6 @@ const moviesdb = {
 const booksdb = {
     search: function (title,cb){
         makeApiRequest(urls.googleBookSearch(title),function(res){
-            console.log(res.items.slice(0,7)[1].volumeInfo.averageRating);
              cb(res.items.slice(0,7).map((value)=>{
                 return {title: value.volumeInfo.title,
                                  Autors: value.volumeInfo.authors,
