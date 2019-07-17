@@ -22,20 +22,16 @@ body{
     width: 100%;
     background-color:  #EEE;
     padding: 1%;
-    min-height: 200px;
+    min-height: 40vh;
     border-radius: 20px;
+    border-left: 2px;
+    border-color: #e16868;
+    border-style: solid;
 }
 .result-section .result-movies-head{
     text-align: center;
 }
 
-.break-line{
-    margin: auto;
-    width: 90%;
-    height: 4px;
-    background-color:  #e16868;
-    border-radius: 10px;
-}
 .result-section .result-books-head{
     text-align: center;
 }
@@ -44,10 +40,15 @@ body{
     width: 100%;
     background-color:  #EEE;
     padding: 1%;
-    min-height: 200px;
+    min-height: 40vh;
     border-radius: 20px;
+    border-left: 2px;
+    border-color: #e16868;
+    border-style: solid;
 }
-
+.star-color{
+    color: rgb(255, 187, 0);
+}
 
 /* Search section */
 .tb
@@ -81,7 +82,7 @@ input, button
 }
 
 
-.search-input[type="text"]
+.search-input
 {
     width: 100%;
     font-size: 1.5rem;
@@ -89,7 +90,7 @@ input, button
     padding: 1%;
 }
 
-.search-input[type="text"]::placeholder
+.search-input::placeholder
 {
     color: #e16868;
 }
@@ -122,8 +123,7 @@ input, button
     border-radius: 50%;
     transition: 0.5s ease all;
 }
-.result-movies-container{
-}
+
 .result-movieNode{
     display: flex;
     width: 100%;
@@ -140,6 +140,27 @@ input, button
     width: 70%;
     padding: 1% 2%
 }
+/* book node */
+.result-bookNode{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 2% 0
+}
+.result-books-header{
+    text-align: center;
+}
+.result-book-imageDiv{
+    width: 30%
+}
+.result-book-image{
+    width: 100%
+}
+.result-book-textDiv{
+    width: 70%;
+    padding: 1% 2%
+}
+/*book node*/
 .search-btn-span
 {
     position: absolute;
@@ -204,18 +225,7 @@ input, button
 }
 
 @media (min-width: 768px){
-  
     .result-section{
         flex-direction: row;
-        
-    }
-    .break-line{
-        width: 10px;
-        background-color:  #00f;
-        min-height: 50vh; 
-         margin-top: 2vh;
-         margin-bottom: 2vh;
-        background-color:  #e16868;
-        border-radius: 10px;
     }
   }
