@@ -16,39 +16,38 @@ function makeApiRequest(url, callback) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200){
-            callback(xhr.responseText);
+            callback(xhr.response);
         }
     }
     xhr.open('GET',url);
+    xhr.responseType = 'json';
     xhr.send();
 }
 const moviesdb = {
     search: function (title) {
-        makeApiRequest(urls.moviedbSearch(title),function(responseText){
-            return JSON.parse(responseText).results.slice(0,7);
+        makeApiRequest(urls.moviedbSearch(title),function(res){
+            res.results.slice(0,7);
         });
     },
     details: function(id) {
-        makeApiRequest(urls.moviedbDetails(id), function(responseText) {
-            let response = JSON.parse(responseText);
-            return {
-                overview: response.overview,
-                genre: response.genres,
-                rating: response.vote_average
+        makeApiRequest(urls.moviedbDetails(id), function(res) {
+            let obj = {
+                overview: res.overview,
+                genre: res.genres,
+                rating: res.vote_average
             };
         })
     },
     credits: function(id) {
-        makeApiRequest(urls.moviedbCredits(id), function(responseText) {
-            return JSON.parse(responseText).cast.slice(0,4);
+        makeApiRequest(urls.moviedbCredits(id), function(res) {
+             res.cast.slice(0,4);
         });
     },
     video: function(id){
-        makeApiRequest(urls.moviedbVideos(id), function(responseText) {
-            let response = JSON.parse(responseText);
-            return urls.youtubeLink(response.results[0].key);
+        makeApiRequest(urls.moviedbVideos(id), function(res) {
+            return urls.youtubeLink(res.results[0].key);
         });
     }
 }
 moviesdb.video("296096");
-console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
+// console.log(makeApiRequest(urls.googleBookSearch('Me before you'),(x)))
