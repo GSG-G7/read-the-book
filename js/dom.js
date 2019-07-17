@@ -23,6 +23,7 @@ function renderMovies(res) {
             container.appendChild(movieNode);
         });
     });
+    container.classList.add('result-movies-container');
    movieResults.replaceChild(container,oldContainer);
 }
 
@@ -35,6 +36,7 @@ function createMovieNode(obj) {
     const overview = document.createElement('p');
     const genre = document.createElement('p')
     const rating = document.createElement('span');
+    
     moviesdb.credits(obj.id, function (cast) {
         const p = document.createElement('p');
         p.textContent = "Cast: " + cast.join(', ');
@@ -54,7 +56,10 @@ function createMovieNode(obj) {
     img.src = obj.posterLink;
     overview.textContent = obj.overview;
     genre.textContent = "Genre: " + obj.genre.join(', ')
-
+    img.classList.add('result-movie-image');
+    imgDiv.classList.add('result-movie-imageDiv');
+    textDiv.classList.add('result-movie-textDiv');
+   
     title.appendChild(rating);
     textDiv.appendChild(title);
     textDiv.appendChild(overview);
@@ -63,6 +68,7 @@ function createMovieNode(obj) {
 
     div.appendChild(imgDiv);
     div.appendChild(textDiv);
+    div.classList.add('result-movieNode')
 
     return div;
 }
