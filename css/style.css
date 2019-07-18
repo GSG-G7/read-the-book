@@ -67,8 +67,8 @@ body {
     vertical-align: middle;
 }
 
-input,
-button {
+.search-input,
+.search-btn {
     color: #000;
     padding: 0;
     margin: 0;
