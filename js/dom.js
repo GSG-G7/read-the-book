@@ -1,4 +1,5 @@
 const selector = (id) => document.querySelector(`#${id}`);
+const createE = (e) => document.createElement(e);
 
 const movieResults = selector('result-movies');
 const bookResults = selector('result-books');
@@ -17,7 +18,7 @@ selector('search-input').addEventListener('keydown', function (e) {
 
 function renderMovies(res) {
     let oldContainer = selector('result-movie-container');
-    let container = document.createElement('div');
+    let container = createE('div');
     container.id = 'result-movie-container';
     res.forEach(id => {
         moviesdb.details(id, function (movie) {
@@ -30,25 +31,25 @@ function renderMovies(res) {
 }
 
 function createMovieNode(obj) {
-    const div = document.createElement('div');
-    const imgDiv = document.createElement('div');
-    const textDiv = document.createElement('div');
-    const title = document.createElement('h2');
-    const img = document.createElement('img');
-    const overview = document.createElement('p');
-    const genre = document.createElement('p')
-    const ratingDiv = document.createElement('div');
-    const rating = document.createElement('span');
-    const ratingIco = document.createElement('i');
+    const div = createE('div');
+    const imgDiv = createE('div');
+    const textDiv = createE('div');
+    const title = createE('h2');
+    const img = createE('img');
+    const overview = createE('p');
+    const genre = createE('p')
+    const ratingDiv = createE('div');
+    const rating = createE('span');
+    const ratingIco = createE('i');
 
     moviesdb.credits(obj.id, function (cast) {
-        const p = document.createElement('p');
+        const p = createE('p');
         p.textContent = "Cast: " + cast.join(', ');
         textDiv.appendChild(p);
     });
     moviesdb.video(obj.id, function (link) {
         if (link) {
-            const a = document.createElement('a');
+            const a = createE('a');
             a.href = link;
             a.target = 'blank';
             a.textContent = 'Show Trailer';
@@ -85,7 +86,7 @@ function createMovieNode(obj) {
 
 function renderBooks(res) {
     const oldContainer = selector('result-book-container');
-    const newContainer = document.createElement('div');
+    const newContainer = createE('div');
     newContainer.id = 'result-book-container';
     res.forEach(book => {
         const bookNode = createBookNode(book);
@@ -96,16 +97,16 @@ function renderBooks(res) {
 }
 
 function createBookNode(book) {
-    const div = document.createElement('div');
-    const imgDiv = document.createElement('div');
-    const textDiv = document.createElement('div');
-    const title = document.createElement('h2');
-    const img = document.createElement('img');
-    const overview = document.createElement('p');
-    const genre = document.createElement('p')
-    const ratingDiv = document.createElement('div');
-    const rating = document.createElement('span');
-    const ratingIco = document.createElement('i');
+    const div = createE('div');
+    const imgDiv = createE('div');
+    const textDiv = createE('div');
+    const title = createE('h2');
+    const img = createE('img');
+    const overview = createE('p');
+    const genre = createE('p')
+    const ratingDiv = createE('div');
+    const rating = createE('span');
+    const ratingIco = createE('i');
 
     rating.textContent = " " + book.averageRating;
     title.textContent = book.title;
