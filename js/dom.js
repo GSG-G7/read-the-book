@@ -4,15 +4,15 @@ const createE = (e) => document.createElement(e);
 const movieResults = selector('result-movies');
 const bookResults = selector('result-books');
 
-
+const searchInput = selector('search-input');
 selector('search-btn').addEventListener('click', function () {
-    moviesdb.search(selector('search-input').value, renderMovies);
-    booksdb.search(selector('search-input').value, renderBooks)
+    moviesdb.search(searchInput.value, renderMovies);
+    booksdb.search(searchInput.value, renderBooks)
 })
-selector('search-input').addEventListener('keydown', function (e) {
+searchInput.addEventListener('keydown', function (e) {
     if (e.key == 'Enter') {
-        moviesdb.search(selector('search-input').value, renderMovies);
-        booksdb.search(selector('search-input').value, renderBooks);
+        moviesdb.search(searchInput.value, renderMovies);
+        booksdb.search(searchInput.value, renderBooks);
     }
 })
 
