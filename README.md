@@ -15,6 +15,7 @@
 - It shows the movies and books that are related to each other.
 
 # How did we build this website?
+![Whiteboard-Architecture](https://i.imgur.com/G57Bp2q.jpg)
 - **First,** read the project in details and discussed the requirements
  together
 - **Second,** searched for two APIs and read their documentation
