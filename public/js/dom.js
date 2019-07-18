@@ -5,6 +5,7 @@ const movieResults = selector('result-movies');
 const bookResults = selector('result-books');
 
 const searchInput = selector('search-input');
+
 selector('search-btn').addEventListener('click', function () {
     moviesdb.search(searchInput.value, renderMovies);
     booksdb.search(searchInput.value, renderBooks)
